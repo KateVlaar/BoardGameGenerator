@@ -1,0 +1,16 @@
+.Tile {
+    width: 250px;
+    height: 250px;
+    max-width: 250px;
+    max-height: 250px;
+    background-color: powderblue;
+    margin: auto;
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    top: 10%;
+}
