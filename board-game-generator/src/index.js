@@ -13,7 +13,7 @@ ReactDOM.render(
 );
 ReactDOM.render(
   <React.StrictMode>
-    <Tile>Hi I am a car! I am also a tile with a lot of text</Tile>
+    <Tile text="Hi I am a car! I am also a tile with a lot of text"></Tile>
   </React.StrictMode>,
   document.getElementById('tile')
 );
