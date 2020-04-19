@@ -13,7 +13,7 @@ ReactDOM.render(
 );
 ReactDOM.render(
   <React.StrictMode>
-    <Tile text="Hi I am a car! I am also a tile with a lot of text"></Tile>
+    <Tile text="Move ahead 3 spaces"></Tile>
   </React.StrictMode>,
   document.getElementById('tile')
 );

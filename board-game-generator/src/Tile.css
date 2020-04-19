@@ -1,21 +1,56 @@
-.Tile {
+.scene {
     width: 250px;
     height: 250px;
+    perspective: 600px;
+  }
+
+.Tile {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
     max-width: 250px;
     max-height: 250px;
-    background-color: powderblue;
     margin: auto;
-    position: relative;
     border-radius: 5px;
     font-size: 16px;
     font-weight: 20px;
+    display:table;
+    perspective: 600px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
+
+.Tile.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+.TileFront {
+    background-color: powderblue;
+}
+
+.TileBack {
+    transform: rotateY(180deg);
+    background-color: powderblue;
+}
+
+.TileFace {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
 
 .label {
     position: absolute;
     text-align: center;
     vertical-align: middle;
     top: 10%;
+    display: table-cell;
+    backface-visibility: hidden;
 }
 
 .tile-button {

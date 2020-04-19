@@ -23,16 +23,29 @@ class Tile extends React.Component {
         // this.setState({text: this.textBox.current});
     }
 
+    onClick = () => {
+        document.querySelector('.Tile').classList.toggle('is-flipped');
+        console.log("HELLO");
+    }
+
     handleChange(event) {
         this.setState({text: event.target.value});
     }
 
     renderTile = () => {
         return (
-            <div className="Tile">
-                <h1 className="label">{this.state.text}</h1>
-                <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
-                <button className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
+            <div className="scene" onClick={this.onClick}>
+                <div className="Tile">
+                    <div className="TileFront TileFace">
+                        <h1 className="label">{this.state.text}</h1>
+                        <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
+                        <button className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
+                    </div>
+                    <div className="TileBack TileFace">
+                        <h1 className="label">Player must move their marker three places ahead</h1>
+                        <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
+                    </div>
+                </div>
             </div>
         );
     }
