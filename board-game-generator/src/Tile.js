@@ -14,8 +14,9 @@ class Tile extends React.Component {
             editingText: false,
             changingColor: false,
             text: this.props.text,
-            background: "powderblue"};
-        this.handleChange = this.handleChange.bind(this);
+            background: "#b0e0e6"};
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleColorChange = this.handleColorChange.bind(this);
         this.onClick = this.onClick.bind(this);
     }
     edit = () => {
@@ -41,11 +42,20 @@ class Tile extends React.Component {
         // }
     }
 
+    handleColorChange= (color, event)  => {
+        this.setState({ background: color.hex});
+    }
+
     handleColorChangeComplete = (color) => {
-        this.setState({ background: color.hex, changingColor: false });
+        this.setState({ background: color.hex});
     };
 
-    handleChange(event) {
+    saveColorChange = () => {
+        this.setState({ changingColor: false});
+        console.log("updating background")
+    }
+
+    handleChange = (event) => {
         this.setState({text: event.target.value});
     }
 
@@ -53,7 +63,7 @@ class Tile extends React.Component {
         return (
                 <div className="scene" onClick={this.onClick}>
                     <div className="Tile">
-                        <div className="TileFront TileFace" draggable>
+                        <div className="TileFront TileFace" draggable style={{backgroundColor: this.state.background}}>
                             <h1 className="label">{this.state.text}</h1>
                             <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
                             <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
@@ -79,11 +89,11 @@ class Tile extends React.Component {
     renderColorChange = () => {
         return (
             <div>
-                <div className="Tile">
+                <div className="Tile" style={{backgroundColor: this.state.background}}>
                     <h1 className="label">{this.state.text}</h1>
-                    <button onClick={this.handleColorChangeComplete} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
+                    <button onClick={this.saveColorChange} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
                 </div>
-                < ChromePicker onChangeComplete={ this.handleColorChangeComplete }/>
+                < ChromePicker color={this.state.background} onChange={this.handleColorChange} onChangeComplete={this.handleColorChangeComplete}/>
             </div>
         );
     }
