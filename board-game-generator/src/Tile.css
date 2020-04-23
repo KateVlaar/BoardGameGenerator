@@ -31,12 +31,10 @@
   }
 
 .TileFront {
-    background-color: powderblue;
 }
 
 .TileBack {
     transform: rotateY(180deg);
-    background-color: powderblue;
 }
 
 .TileFace {
@@ -79,7 +77,6 @@ textarea {
     margin-top: 50px;
     box-sizing: border-box;
     resize: vertical; 
-    background-color: powderblue;
     position: absolute;
     text-align: center;
     display: block;

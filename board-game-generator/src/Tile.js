@@ -62,8 +62,8 @@ class Tile extends React.Component {
     renderTile = () => {
         return (
                 <div className="scene" onClick={this.onClick}>
-                    <div className="Tile">
-                        <div className="TileFront TileFace" draggable style={{backgroundColor: this.state.background}}>
+                    <div className="Tile" style={{backgroundColor: this.state.background}}>
+                        <div className="TileFront TileFace" draggable>
                             <h1 className="label">{this.state.text}</h1>
                             <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
                             <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
@@ -79,8 +79,8 @@ class Tile extends React.Component {
 
     renderEditText = () => {
         return (
-            <div className="Tile">
-                <textarea maxLength="65" className="text-area" defaultValue={this.state.text} onChange={this.handleChange}></textarea>
+            <div className="Tile" style={{backgroundColor: this.state.background}}>
+                <textarea maxLength="65" className="text-area" defaultValue={this.state.text} onChange={this.handleChange} style={{backgroundColor: this.state.background}}></textarea>
                 <button onClick={this.save} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
             </div>
         );
