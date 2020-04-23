@@ -76,16 +76,11 @@ textarea {
     width: 90%;
     height: 80%;
     max-height: 80%;
-    padding-top: 50px; /* adjust value  to suit  */
+    margin-top: 50px;
     box-sizing: border-box;
     resize: vertical; 
-    /* width: 200px;
-    height: 200px; */
-    /* margin: 50 20 20 20; */
     background-color: powderblue;
     position: absolute;
-    /* vertical-align: middle; */
-    /* top: 10%; */
     text-align: center;
     display: block;
     margin-left: auto;
