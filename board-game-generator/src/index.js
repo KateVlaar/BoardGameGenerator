@@ -13,7 +13,7 @@ ReactDOM.render(
 );
 ReactDOM.render(
   <React.StrictMode>
-    <Tile text="Move ahead 3 spaces"></Tile>
+    <Tile frontText="Move ahead 3 spaces" backText="Player must advance by three spaces"></Tile>
   </React.StrictMode>,
   document.getElementById('tile')
 );

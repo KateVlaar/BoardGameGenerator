@@ -43,6 +43,14 @@
     transform: rotateY(180deg);
   }
 
+.is-flipped textarea {
+    transform: scale(-1, 1);
+}
+
+.is-flipped .tile-button {
+    float:right;
+}
+
 .TileFront {
     border-radius: 5px;
 }
