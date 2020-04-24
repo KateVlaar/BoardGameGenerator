@@ -1,31 +1,4 @@
-.scene {
-    /* width: 250px;
-    height: 200px;
-    background-color:pink;
-    z-index: 1000;
-    position: relative;
-    margin: auto;
-    padding-block-start: 50%;
-    bottom:100px; */
-    background-color:pink;
-  }
-
 .Tile {
-    /* width: 250px;
-    height: 250px;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-    position: relative;
-    margin: auto;
-    max-width: 250px;
-    max-height: 250px;
-
-    display:table;
-    perspective: 600px;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    background-color: powderblue; */
     margin: auto;
     transition: transform 1s;
     perspective: 600px;
@@ -41,14 +14,6 @@
 
 .is-flipped {
     transform: rotateY(180deg);
-  }
-
-.is-flipped textarea {
-    transform: scale(-1, 1);
-}
-
-.is-flipped .tile-button {
-    float:right;
 }
 
 .TileFront {
@@ -56,6 +21,7 @@
 }
 
 .TileBack {
+    border-radius: 5px;
     transform: rotateY(180deg);
 }
 

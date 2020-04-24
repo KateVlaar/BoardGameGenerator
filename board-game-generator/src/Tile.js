@@ -60,25 +60,27 @@ class Tile extends React.Component {
 
     renderTile = () => {
         return (
-                <div className="Tile">
-                    <div className="TileFront TileFace" style={{backgroundColor: this.state.background}} >
-                        <h1 className="label" onClick={this.onClick}>{this.state.frontText}</h1>
-                        <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
-                        <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
-                    </div>
-                    <div className="TileBack TileFace" style={{backgroundColor: this.state.background}} >
-                        <h1 className="label" onClick={this.onClick}>{this.state.backText}</h1>
-                        <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
-                    </div>
+            <div className="Tile">
+                <div className="TileFront TileFace" style={{backgroundColor: this.state.background}} >
+                    <h1 className="label" onClick={this.onClick}>{this.state.frontText}</h1>
+                    <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
+                    <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
+                </div>
+                <div className="TileBack TileFace" style={{backgroundColor: this.state.background}} >
+                    <h1 className="label" onClick={this.onClick}>{this.state.backText}</h1>
+                    <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
+                </div>
             </div>
         );
     }
 
-    renderEditText = (text) => {
+    renderEditText = (text, classes) => {
         return (
-            <div className="Tile" style={{backgroundColor: this.state.background}}>
-                <textarea maxLength="65" className="text-area" defaultValue={text} onChange={this.handleChange} style={{backgroundColor: this.state.background}}></textarea>
-                <button onClick={this.save} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
+            <div className="Tile">
+                <div className={classes} style={{backgroundColor: this.state.background}}>
+                    <textarea maxLength="65" className="text-area" defaultValue={text} onChange={this.handleChange} style={{backgroundColor: this.state.background}}></textarea>
+                    <button onClick={this.save} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
+                </div>
             </div>
         );
     }
@@ -98,9 +100,9 @@ class Tile extends React.Component {
     render() {
         if (this.state.editingText) {
             if (document.querySelector('.Tile').classList.contains('is-flipped')) {
-                return this.renderEditText(this.state.backText);
+                return this.renderEditText(this.state.backText, "TileFace TileBack");
             } else {
-                return this.renderEditText(this.state.frontText);
+                return this.renderEditText(this.state.frontText, "TileFace TileFront");
             }
         } else if (this.state.changingColor) {
             return this.renderColorChange();
