@@ -17,7 +17,7 @@ class Tile extends React.Component {
             background: "#b0e0e6"};
         // this.handleChange = this.handleChange.bind(this);
         // this.handleColorChange = this.handleColorChange.bind(this);
-        this.onClick = this.onClick.bind(this);
+        // this.onClick = this.onClick.bind(this);
     }
     edit = () => {
         console.log('Editing Comment');
@@ -37,7 +37,7 @@ class Tile extends React.Component {
 
     onClick = () => {
         // if (!this.state.editingText && !this.state.changingColor) {
-        //    document.querySelector('.Tile').classList.toggle('is-flipped');
+            document.querySelector('.Tile').classList.toggle('is-flipped');
         //     console.log('flipped' + this.state.changingColor);
         // }
     }
@@ -61,19 +61,38 @@ class Tile extends React.Component {
 
     renderTile = () => {
         return (
-                <div className="scene" onClick={this.onClick}>
-                    <div className="Tile" style={{backgroundColor: this.state.background}}>
-                        <div className="TileFront TileFace" draggable>
-                            <h1 className="label">{this.state.text}</h1>
-                            <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
-                            <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
-                        </div>
-                        <div className="TileBack TileFace">
-                            <h1 className="label">Player must move their marker three places ahead</h1>
-                            <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
-                        </div>
+                // <div className="scene" >
+                //     <div className="Tile" style={{backgroundColor: this.state.background}} onClick={this.onClick}  >
+                //         <div className="TileFront TileFace" draggable>
+                //             <h1 className="label">{this.state.text}</h1>
+                //             <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
+                //             <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
+                //         </div>
+                //         <div className="TileBack TileFace">
+                //             <h1 className="label">Player must move their marker three places ahead</h1>
+                //             <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
+                //         </div>
+                //     </div>
+                // </div>
+            //     <div class="Tile" style={{backgroundColor: this.state.background}}onClick={this.onClick}>
+            //         <div class="TileFace TileFront">
+            //             Front
+            //         </div>
+            //         <div class="TileFace TileBack">
+            //             Back
+            //         </div>
+            //   </div>
+                <div className="Tile">
+                    <div className="TileFront TileFace" style={{backgroundColor: this.state.background}} >
+                        <h1 className="label" onClick={this.onClick}>{this.state.text}</h1>
+                        <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
+                        <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
                     </div>
-                </div>
+                    <div className="TileBack TileFace" style={{backgroundColor: this.state.background}} >
+                        <h1 className="label" onClick={this.onClick}>Player must move their marker three places ahead</h1>
+                        <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
+                    </div>
+            </div>
         );
     }
 

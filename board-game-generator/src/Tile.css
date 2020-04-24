@@ -1,12 +1,17 @@
 .scene {
-    width: 250px;
-    height: 250px;
-    perspective: 600px;
+    /* width: 250px;
+    height: 200px;
+    background-color:pink;
+    z-index: 1000;
+    position: relative;
     margin: auto;
+    padding-block-start: 50%;
+    bottom:100px; */
+    background-color:pink;
   }
 
 .Tile {
-    width: 250px;
+    /* width: 250px;
     height: 250px;
     transition: transform 1s;
     transform-style: preserve-3d;
@@ -15,22 +20,31 @@
     margin: auto;
     max-width: 250px;
     max-height: 250px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 20px;
+
     display:table;
     perspective: 600px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    background-color: powderblue;
+    background-color: powderblue; */
+    margin: auto;
+    transition: transform 1s;
+    perspective: 600px;
+    position: relative;
+    transform-style: preserve-3d;
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 20px;
 
 }
 
-.Tile.is-flipped {
+.is-flipped {
     transform: rotateY(180deg);
   }
 
 .TileFront {
+    border-radius: 5px;
 }
 
 .TileBack {
@@ -38,11 +52,10 @@
 }
 
 .TileFace {
+    backface-visibility: hidden;
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
   }
 
 .label {
@@ -51,7 +64,7 @@
     vertical-align: middle;
     top: 10%;
     display: table-cell;
-    backface-visibility: hidden;
+    cursor: pointer;
 }
 
 .tile-button {
