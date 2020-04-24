@@ -87,7 +87,7 @@ class Tile extends React.Component {
 
     renderColorChange = () => {
         return (
-            <div>
+            <div className="colorContainer">
                 <div className="Tile" style={{backgroundColor: this.state.background}}>
                     <h1 className="label">{this.state.frontText}</h1>
                     <button onClick={this.saveColorChange} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>

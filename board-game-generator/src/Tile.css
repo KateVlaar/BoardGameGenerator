@@ -9,7 +9,7 @@
     border-radius: 5px;
     font-size: 16px;
     font-weight: 20px;
-
+    flex: 1;
 }
 
 .is-flipped {
@@ -75,4 +75,14 @@ textarea {
     border: none;
     overflow: hidden;
     margin: 50 25 25 25;
+}
+
+.colorContainer {
+    margin: auto;
+    display: flex;
+    max-width: 475px;
+}
+
+.colorPicker {
+    flex: 2;
 }
