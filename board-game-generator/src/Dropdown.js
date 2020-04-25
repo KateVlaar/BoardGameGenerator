@@ -16,15 +16,15 @@ class Dropdown extends React.Component {
         //   let openDropdown = dropdowns[i];
         //   openDropdown.classList.toggle('is-flipped');
         // }
-        console.log('open dialog');
-        document.querySelector('.dropdown-content').classList.toggle("show");
+        console.log('open dialog' + this.props.dropdownClass);
+        document.querySelector('.' + this.props.dropdownClass).classList.toggle("show");
     }
 
     render() {
         return (
             <div className="dropdown">
                 <button onClick={this.openDropdown} className="dropdown-button"><span>{this.props.header}</span><FontAwesomeIcon className="dropdown-icon" icon={faSortDown} size="2x" /></button>
-                <div className="dropdown-content">
+                <div className={this.props.dropdownClass + " dropdown-content"}>
                     {this.props.items.map((item) => {
                         return (<a key={item.id}>{item.frontText}</a>);
                     })}

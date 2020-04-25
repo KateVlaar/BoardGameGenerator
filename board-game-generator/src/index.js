@@ -13,7 +13,7 @@ import * as serviceWorker from './serviceWorker';
 //   document.getElementById('root')
 // );
 
-const items = [
+const advancements = [
     {
       id: 0,
       frontText: "Move Ahead 3 Spaces"
@@ -24,12 +24,23 @@ const items = [
     }
   ];
 
+  const drawBacks = [
+    {
+      id: 0,
+      frontText: "Move Back 3 Spaces"
+    },
+    {
+      id: 1,
+      frontText: "Move Back 4 spaces"
+    }
+  ];
+
 ReactDOM.render(
   <React.StrictMode>
-    <Dropdown items={items} header="Advancement"></Dropdown>
-    <Dropdown items={items} header="Draw Backs"></Dropdown>
-    <Dropdown items={items} header="Punishments"></Dropdown>
-    <Dropdown items={items} header="Games"></Dropdown>
+    <Dropdown items={advancements} header="Advancement"  dropdownClass="dropdown-content-1"></Dropdown>
+    <Dropdown items={drawBacks} header="Draw Backs" dropdownClass="dropdown-content-2"></Dropdown>
+    <Dropdown items={drawBacks} header="Punishments" dropdownClass="dropdown-content-3"></Dropdown>
+    <Dropdown items={drawBacks} header="Games" dropdownClass="dropdown-content-4"></Dropdown>
   </React.StrictMode>,
   document.getElementById('dropdown-headers')
 );
