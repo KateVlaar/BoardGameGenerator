@@ -15,7 +15,7 @@ class Tile extends React.Component {
             changingColor: false,
             frontText: this.props.frontText,
             backText: this.props.backText,
-            background: "#b0e0e6"};
+            background: this.props.background};
     }
 
     edit = () => {
@@ -34,7 +34,7 @@ class Tile extends React.Component {
     }
 
     onClick = () => {
-            document.querySelector('.Tile').classList.toggle('is-flipped');
+        document.querySelector('.Tile').classList.toggle('is-flipped');
     }
 
     handleColorChange= (color, event)  => {
