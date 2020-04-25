@@ -1,4 +1,20 @@
+body {
+    background-color: indigo;
+}
+
+#dropdown-headers {
+    display: inline-block;
+    padding: 50px;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
 #tile {
-    background-color: powderblue;
-    width: 250px;
+    padding-top: 50px;
+}
+
+.dropdown-header {
+    display: inline-block;
+    padding: 50px;
 }

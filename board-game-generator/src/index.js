@@ -26,10 +26,35 @@ const items = [
 
 ReactDOM.render(
   <React.StrictMode>
-    <Dropdown items={items}></Dropdown>
+    <Dropdown items={items} header="Advancement"></Dropdown>
+    <Dropdown items={items} header="Draw Backs"></Dropdown>
+    <Dropdown items={items} header="Punishments"></Dropdown>
+    <Dropdown items={items} header="Games"></Dropdown>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('dropdown-headers')
 );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Dropdown items={items} header="Draw Backs"></Dropdown>
+//   </React.StrictMode>,
+//   document.getElementById('dropdown-header-2')
+// );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Dropdown items={items} header="Punishments"></Dropdown>
+//   </React.StrictMode>,
+//   document.getElementById('dropdown-header-3')
+// );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Dropdown items={items} header="Games"></Dropdown>
+//   </React.StrictMode>,
+//   document.getElementById('dropdown-header-4')
+// );
+
 ReactDOM.render(
   <React.StrictMode>
     <Tile frontText="Move ahead 3 spaces" backText="Player must advance by three spaces" background="#b0e0e6"></Tile>

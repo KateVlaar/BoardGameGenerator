@@ -23,7 +23,7 @@ class Dropdown extends React.Component {
     render() {
         return (
             <div className="dropdown">
-                <button onClick={this.openDropdown} className="dropdown-button"><span>Dropdown</span><FontAwesomeIcon className="dropdown-icon" icon={faSortDown} size="2x" /></button>
+                <button onClick={this.openDropdown} className="dropdown-button"><span>{this.props.header}</span><FontAwesomeIcon className="dropdown-icon" icon={faSortDown} size="2x" /></button>
                 <div className="dropdown-content">
                     {this.props.items.map((item) => {
                         return (<a key={item.id}>{item.frontText}</a>);
