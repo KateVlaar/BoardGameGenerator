@@ -7,6 +7,10 @@ import {faSortDown} from '@fortawesome/free-solid-svg-icons';
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            selectedItem: "hello"
+        }
+        this.items = this.props.items;
     }
 
     openDropdown = () => {
@@ -20,13 +24,21 @@ class Dropdown extends React.Component {
         document.querySelector('.' + this.props.dropdownClass).classList.toggle("show");
     }
 
+    setSelectedItem = (text) => {
+        console.log(text);
+        //this.setState({selectedItem: text});
+    }
+
     render() {
         return (
             <div className="dropdown">
                 <button onClick={this.openDropdown} className="dropdown-button"><span>{this.props.header}</span><FontAwesomeIcon className="dropdown-icon" icon={faSortDown} size="2x" /></button>
                 <div className={this.props.dropdownClass + " dropdown-content"}>
-                    {this.props.items.map((item) => {
-                        return (<a key={item.id}>{item.frontText}</a>);
+                    {console.log()}
+                    {this.items.map(({id, frontText}, key) => {
+                        return (<div key={key}>
+                                    <button onClick={() => this.setSelectedItem(frontText)} ref={ref => (this.items[key]) = ref}>{frontText}</button>
+                                </div>);
                     })}
                 </div>
             </div>

@@ -22,9 +22,9 @@ const advancements = [
       id: 1,
       frontText: "Move Ahead 4 spaces"
     }
-  ];
+];
 
-  const drawBacks = [
+const drawBacks = [
     {
       id: 0,
       frontText: "Move Back 3 Spaces"
@@ -33,38 +33,39 @@ const advancements = [
       id: 1,
       frontText: "Move Back 4 spaces"
     }
-  ];
+];
+
+const punishments =[
+    {
+      id: 0,
+      frontText: "Skip a turn"
+    },
+    {
+      id: 1,
+      frontText: "Choose someone to skip a turn"
+    }
+];
+
+const games = [
+  {
+    id: 0,
+    frontText: "Duel a player to a game of rock paper scissors"
+  },
+  {
+    id: 1,
+    frontText: "Act out an animal"
+  }
+];
 
 ReactDOM.render(
   <React.StrictMode>
     <Dropdown items={advancements} header="Advancement"  dropdownClass="dropdown-content-1"></Dropdown>
     <Dropdown items={drawBacks} header="Draw Backs" dropdownClass="dropdown-content-2"></Dropdown>
-    <Dropdown items={drawBacks} header="Punishments" dropdownClass="dropdown-content-3"></Dropdown>
-    <Dropdown items={drawBacks} header="Games" dropdownClass="dropdown-content-4"></Dropdown>
+    <Dropdown items={punishments} header="Punishments" dropdownClass="dropdown-content-3"></Dropdown>
+    <Dropdown items={games} header="Games" dropdownClass="dropdown-content-4"></Dropdown>
   </React.StrictMode>,
   document.getElementById('dropdown-headers')
 );
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Dropdown items={items} header="Draw Backs"></Dropdown>
-//   </React.StrictMode>,
-//   document.getElementById('dropdown-header-2')
-// );
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Dropdown items={items} header="Punishments"></Dropdown>
-//   </React.StrictMode>,
-//   document.getElementById('dropdown-header-3')
-// );
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Dropdown items={items} header="Games"></Dropdown>
-//   </React.StrictMode>,
-//   document.getElementById('dropdown-header-4')
-// );
 
 ReactDOM.render(
   <React.StrictMode>
