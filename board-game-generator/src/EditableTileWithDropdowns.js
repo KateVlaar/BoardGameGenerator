@@ -69,7 +69,7 @@ class EditableTileWithDropdowns extends React.Component {
                     <Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={punishments} header="Punishments" dropdownClass="dropdown-content-3"></Dropdown>
                     <Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={games} header="Games" dropdownClass="dropdown-content-4"></Dropdown>
                 </div>
-                <Tile frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6"></Tile>
+                <Tile onDefaultCardSelect={this.newDefaultCardSelect} frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6"></Tile>
             </div>);
     }
 }

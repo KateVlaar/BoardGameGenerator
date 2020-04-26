@@ -15,6 +15,7 @@ class Tile extends React.Component {
             changingColor: false,
             backText: this.props.backText,
             background: this.props.background};
+        this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
     }
 
     edit = () => {
@@ -53,7 +54,8 @@ class Tile extends React.Component {
         if (document.querySelector('.Tile').classList.contains('is-flipped')) {
             this.setState({backText: event.target.value});
         } else {
-            this.setState({frontText: event.target.value});
+            this.props.onDefaultCardSelect(event.target.value);
+            //this.setState({frontText: event.target.value});
         }
     }
 
