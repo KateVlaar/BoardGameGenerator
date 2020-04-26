@@ -10,7 +10,6 @@ class Dropdown extends React.Component {
         this.state = {
             selectedItem: "hello"
         }
-        this.items = this.props.items;
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -34,16 +33,7 @@ class Dropdown extends React.Component {
     }
 
     handleChange = (event) => {
-        console.log("Event")
-        //this.props.OnDefaultCardSelect(this.state.selectedItem);
-        console.log(event);
         this.props.onDefaultCardSelect(event);
-    }
-
-    setSelectedItem = (text) => {
-        console.log(text);
-        //this.props.OnDefaultCardSelect(text);
-        this.setState({selectedItem: text});
     }
 
     render() {
@@ -51,10 +41,9 @@ class Dropdown extends React.Component {
             <div className="dropdown">
                 <button onClick={this.openDropdown} className="dropdown-button"><span>{this.props.header}</span><FontAwesomeIcon className="dropdown-icon" icon={faSortDown} size="2x" /></button>
                 <div className={this.props.dropdownClass + " dropdown-content"}>
-                    {console.log()}
-                    {this.items.map(({id, frontText}, key) => {
-                        return (<div key={key}>
-                                    <button onClick={() => this.handleChange(frontText)} ref={ref => (this.items[key]) = ref}>{frontText}</button>
+                    {this.props.items.map((item, index) => {
+                        return (<div key={index}>
+                                    <button onClick={() => this.handleChange(item.frontText)} >{item.frontText}</button>
                                 </div>);
                     })}
                 </div>
