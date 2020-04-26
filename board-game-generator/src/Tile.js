@@ -13,7 +13,6 @@ class Tile extends React.Component {
         this.state = {
             editingText: false,
             changingColor: false,
-            frontText: this.props.frontText,
             backText: this.props.backText,
             background: this.props.background};
     }
@@ -50,7 +49,7 @@ class Tile extends React.Component {
         console.log("updating background")
     }
 
-    handleChange = (event) => {
+    handleTextAreaChange = (event) => {
         if (document.querySelector('.Tile').classList.contains('is-flipped')) {
             this.setState({backText: event.target.value});
         } else {
@@ -62,7 +61,7 @@ class Tile extends React.Component {
         return (
             <div className="Tile">
                 <div className="TileFront TileFace" style={{backgroundColor: this.state.background}} >
-                    <h1 className="label" onClick={this.onClick}>{this.state.frontText}</h1>
+                    <h1 className="label" onClick={this.onClick}>{this.props.frontText}</h1>
                     <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
                     <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
                 </div>
@@ -78,7 +77,7 @@ class Tile extends React.Component {
         return (
             <div className="Tile">
                 <div className={classes} style={{backgroundColor: this.state.background}}>
-                    <textarea maxLength="65" className="text-area" defaultValue={text} onChange={this.handleChange} style={{backgroundColor: this.state.background}}></textarea>
+                    <textarea maxLength="65" className="text-area" defaultValue={text} onChange={this.handleTextAreaChange} style={{backgroundColor: this.state.background}}></textarea>
                     <button onClick={this.save} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
                 </div>
             </div>
@@ -89,7 +88,7 @@ class Tile extends React.Component {
         return (
             <div className="colorContainer">
                 <div className="Tile" style={{backgroundColor: this.state.background}}>
-                    <h1 className="label">{this.state.frontText}</h1>
+                    <h1 className="label">{this.props.frontText}</h1>
                     <button onClick={this.saveColorChange} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
                 </div>
                 < ChromePicker color={this.state.background} onChange={this.handleColorChange} onChangeComplete={this.handleColorChangeComplete}/>
@@ -102,7 +101,7 @@ class Tile extends React.Component {
             if (document.querySelector('.Tile').classList.contains('is-flipped')) {
                 return this.renderEditText(this.state.backText, "TileFace TileBack");
             } else {
-                return this.renderEditText(this.state.frontText, "TileFace TileFront");
+                return this.renderEditText(this.props.frontText, "TileFace TileFront");
             }
         } else if (this.state.changingColor) {
             return this.renderColorChange();

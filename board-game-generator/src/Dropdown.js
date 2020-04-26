@@ -11,7 +11,16 @@ class Dropdown extends React.Component {
             selectedItem: "hello"
         }
         this.items = this.props.items;
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    componentDidMount() {
+		window.addEventListener("click", this.props.onClick);
+    }
+    
+	componentWillUnmount() {
+		window.removeEventListener("click", this.props.onClick);
+	}
 
     openDropdown = () => {
         // close dropdown on click outside
@@ -24,9 +33,17 @@ class Dropdown extends React.Component {
         document.querySelector('.' + this.props.dropdownClass).classList.toggle("show");
     }
 
+    handleChange = (event) => {
+        console.log("Event")
+        //this.props.OnDefaultCardSelect(this.state.selectedItem);
+        console.log(event);
+        this.props.onDefaultCardSelect(event);
+    }
+
     setSelectedItem = (text) => {
         console.log(text);
-        //this.setState({selectedItem: text});
+        //this.props.OnDefaultCardSelect(text);
+        this.setState({selectedItem: text});
     }
 
     render() {
@@ -37,7 +54,7 @@ class Dropdown extends React.Component {
                     {console.log()}
                     {this.items.map(({id, frontText}, key) => {
                         return (<div key={key}>
-                                    <button onClick={() => this.setSelectedItem(frontText)} ref={ref => (this.items[key]) = ref}>{frontText}</button>
+                                    <button onClick={() => this.handleChange(frontText)} ref={ref => (this.items[key]) = ref}>{frontText}</button>
                                 </div>);
                     })}
                 </div>
