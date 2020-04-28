@@ -1,0 +1,31 @@
+.board {
+    display: grid;
+    grid-template-columns: 256px 256px 256px 256px 256px 256px;
+    grid-template-rows: 256px 256px 256px 256px;
+    justify-content: center;
+}
+
+.right {
+    display: none;
+}
+
+/* .boardTile {
+    display: inline-block;
+    padding: 5px;
+    text-align: middle;
+    margin: 0;
+    overflow:auto;
+    order: 1;
+}
+
+.right {
+    width: 100%;
+    float: right;
+    order: 2;
+}
+
+.left {
+    width: 100%;
+    float: left;
+    order: 3;
+} */

@@ -59,6 +59,18 @@ class Tile extends React.Component {
         }
     }
 
+    renderTileNoButtons = () => {
+        return(
+            <div className="Tile">
+                <div className="TileFront TileFace" style={{backgroundColor: this.state.background}} >
+                    <h1 className="label" onClick={this.onClick}>{this.props.frontText}</h1>
+                </div>
+                <div className="TileBack TileFace" style={{backgroundColor: this.state.background}} >
+                    <h1 className="label" onClick={this.onClick}>{this.state.backText}</h1>
+                </div>
+            </div>);
+    }
+
     renderTile = () => {
         return (
             <div className="Tile">
@@ -99,16 +111,21 @@ class Tile extends React.Component {
     }
 
     render() {
-        if (this.state.editingText) {
-            if (document.querySelector('.Tile').classList.contains('is-flipped')) {
-                return this.renderEditText(this.state.backText, "TileFace TileBack");
+        if (!(this.props.hideButtons)) {
+            if (this.state.editingText) {
+                if (document.querySelector('.Tile').classList.contains('is-flipped')) {
+                    return this.renderEditText(this.state.backText, "TileFace TileBack");
+                } else {
+                    return this.renderEditText(this.props.frontText, "TileFace TileFront");
+                }
+            } else if (this.state.changingColor) {
+                return this.renderColorChange();
             } else {
-                return this.renderEditText(this.props.frontText, "TileFace TileFront");
+                return this.renderTile();
             }
-        } else if (this.state.changingColor) {
-            return this.renderColorChange();
-        } else {
-            return this.renderTile();
+        }
+        else {
+            return this.renderTileNoButtons();
         }
     }
 }
