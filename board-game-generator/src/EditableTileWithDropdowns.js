@@ -62,7 +62,7 @@ class EditableTileWithDropdowns extends React.Component {
 
     render () {
         return (
-            <div>
+            <div onClick={this.closeDropdownOnTouchOutside}>
                 <div className="dropdown-headers" style={{textAlign: "center"}}>
                     <Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={advancements} header="Advancement"  dropdownClass="dropdown-content-1"></Dropdown>
                     <Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={drawBacks} header="Draw Backs" dropdownClass="dropdown-content-2"></Dropdown>

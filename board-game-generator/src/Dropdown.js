@@ -22,15 +22,20 @@ class Dropdown extends React.Component {
 	}
 
     openDropdown = () => {
-        // close dropdown on click outside
-        // let dropdowns = document.getElementsByClassName("dropdown-content");
-        // for (let i = 0; i < dropdowns.length; i++) {
-        //   let openDropdown = dropdowns[i];
-        //   openDropdown.classList.toggle('is-flipped');
-        // }
-        console.log('open dialog' + this.props.dropdownClass);
         document.querySelector('.' + this.props.dropdownClass).classList.toggle("show");
     }
+
+    // window.onClick = (event) => {
+    //     if (!event.target.matches('.dropdown-button')) {
+    //       var dropdowns = document.getElementsByClassName("dropdown-content");
+    //       for (let i = 0; i < dropdowns.length; i++) {
+    //         var openDropdown = dropdowns[i];
+    //         if (openDropdown.classList.contains('show')) {
+    //           openDropdown.classList.remove('show');
+    //         }
+    //       }
+    //     }
+    //   }
 
     handleChange = (event) => {
         this.props.onDefaultCardSelect(event);
