@@ -5,6 +5,24 @@ import {faFillDrip} from '@fortawesome/free-solid-svg-icons';
 import {faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import { ChromePicker } from 'react-color';
+import { useDrag } from 'react-dnd'
+import { ItemTypes } from './Constants'
+
+function Tiles() {
+    const [{ isDragging }, drag] = useDrag({
+        item: { type: ItemTypes.TILE },
+        collect: monitor => ({
+        isDragging: !!monitor.isDragging(),
+        }),
+    })
+
+    return(
+        <div ref={drag}>
+            <Tile></Tile>
+        </div>
+    );
+}
+
 
 class Tile extends React.Component {
 
@@ -16,6 +34,15 @@ class Tile extends React.Component {
             backText: this.props.backText,
             background: this.props.background};
         this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
+    }
+
+    Tile = () => {
+        const [{ isDragging }, drag] = useDrag({
+            item: { type: ItemTypes.TILE },
+            collect: monitor => ({
+            isDragging: !!monitor.isDragging(),
+            }),
+        })
     }
 
     edit = () => {
@@ -129,5 +156,18 @@ class Tile extends React.Component {
         }
     }
 }
-
+// export default function Card({ isDragging, text }) {
+//     const [{ opacity }, dragRef] = useDrag({
+//       item: { type: "Tile", text },
+//       collect: monitor => ({
+//         opacity: monitor.isDragging() ? 0.5 : 1,
+//       }),
+//     })
+//     return (
+//       <div ref={dragRef} style={{ opacity }}>
+//         {text}
+//       </div>
+//     )
+//   }
+  
 export default Tile;
