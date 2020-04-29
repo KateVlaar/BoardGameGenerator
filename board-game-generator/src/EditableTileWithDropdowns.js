@@ -1,9 +1,9 @@
 import React from 'react';
 import Tile from './Tile.js';
 import Dropdown from './Dropdown.js';
-import { DndProvider } from 'react-dnd'
-import Backend from 'react-dnd-html5-backend'
-import DefaultCard from './DefaultCard.js'
+import DropTarget from './DropTarget.js';
+import Board from './Board';
+import Drag from './Drag';
 
 const advancements = [
     {
@@ -54,30 +54,33 @@ class EditableTileWithDropdowns extends React.Component {
         super(props);
         this.state = {
             frontText: "Move Ahead 3 Spaces",
-            backText: ""
+			backText: ""
         }
     }
 
     newDefaultCardSelect = (frontText) => {
         console.log("New default card select")
         this.setState({frontText: frontText})
+	}
+	
+	onItemDropped(droppedItem) {
+        console.log("We been dropped " + droppedItem );
     }
 
     render () {
-        return (
-            <DndProvider backend={Backend}>
-				<div onClick={this.closeDropdownOnTouchOutside} style={{textAlign: "center"}}>
+        return (<div onClick={this.closeDropdownOnTouchOutside} style={{textAlign: "center"}}>
 					<div className="dropdown-headers" >
 						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={advancements} header="Advancement"  dropdownClass="dropdown-content-1" />
 						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={drawBacks} header="Draw Backs" dropdownClass="dropdown-content-2"/>
 						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={punishments} header="Punishments" dropdownClass="dropdown-content-3"/>
 						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={games} header="Games" dropdownClass="dropdown-content-4"/>
 					</div>
-					{console.log("text: " + this.state.frontText)}
-					<DefaultCard onDefaultCardSelect={this.newDefaultCardSelect} frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6" />
-				{/* <Tile onDefaultCardSelect={this.newDefaultCardSelect} frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6"></Tile> */}
-			</div>
-        </DndProvider>);
+					{/* <DefaultCard onDefaultCardSelect={this.newDefaultCardSelect} frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6" /> */}
+				<Drag dataItem={this.state.frontText}>
+					<Tile onDefaultCardSelect={this.newDefaultCardSelect} frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6" />
+				</Drag>
+				{/* <DropTarget onItemDropped={this.onItemDropped}><Board className="board" draggable onDragOver={e => this.handleDragOver(e)}></Board></DropTarget> */}
+			</div>);
     }
 }
 
