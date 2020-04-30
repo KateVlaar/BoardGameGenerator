@@ -90,7 +90,10 @@ class Board extends React.Component {
         
         var index = this.getTileIndexFromPosition(x, y);
         console.log(index);
-        a[index].frontText = droppedItem;
+        var obj = JSON.parse(droppedItem);
+        a[index].frontText = obj.frontText;
+        console.log(obj.background);
+        a[index].background = obj.background;
         this.setState({arr: a});
     }
 
@@ -98,7 +101,7 @@ class Board extends React.Component {
         return (
             // <DropTarget onItemDropped={this.onItemDropped}><Board className="board" draggable onDragOver={e => this.handleDragOver(e)}></Board></DropTarget>
             <DropTarget className="board" onItemDropped={this.onItemDropped}>
-                {console.log(this.state.arr[0])}
+                {console.log(this.state.arr[1])}
                 {this.state.arr.map(this.createBoard)}
             </DropTarget>);
     }

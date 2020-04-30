@@ -15,7 +15,6 @@ class DropTarget extends React.Component {
     
     drop(ev) {
         ev.preventDefault();
-        console.log("2" + ev.target.id);
         const droppedItem = ev.dataTransfer.getData("text");
         console.log("HERE: " + droppedItem);
         if (droppedItem) {

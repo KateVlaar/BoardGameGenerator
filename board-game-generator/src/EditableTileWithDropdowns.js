@@ -54,7 +54,8 @@ class EditableTileWithDropdowns extends React.Component {
         super(props);
         this.state = {
             frontText: "Move Ahead 3 Spaces",
-			backText: ""
+			backText: "",
+			background: "#b0e0e6"
         }
     }
 
@@ -65,7 +66,11 @@ class EditableTileWithDropdowns extends React.Component {
 	
 	onItemDropped(droppedItem) {
         console.log("We been dropped " + droppedItem );
-    }
+	}
+	
+	onColorUpdate = (color) => {
+		this.setState({background: color})
+	}
 
     render () {
         return (<div onClick={this.closeDropdownOnTouchOutside} style={{textAlign: "center"}}>
@@ -76,8 +81,8 @@ class EditableTileWithDropdowns extends React.Component {
 						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect}  items={games} header="Games" dropdownClass="dropdown-content-4"/>
 					</div>
 					{/* <DefaultCard onDefaultCardSelect={this.newDefaultCardSelect} frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6" /> */}
-				<Drag dataItem={this.state.frontText}>
-					<Tile onDefaultCardSelect={this.newDefaultCardSelect} frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6" />
+				<Drag dataItem={{frontText: this.state.frontText, background: this.state.background}}>
+					<Tile onDefaultCardSelect={this.newDefaultCardSelect} onColorUpdate={this.onColorUpdate} frontText={this.state.frontText} backText="Player must advance by three spaces" background={this.state.background} />
 				</Drag>
 				{/* <DropTarget onItemDropped={this.onItemDropped}><Board className="board" draggable onDragOver={e => this.handleDragOver(e)}></Board></DropTarget> */}
 			</div>);

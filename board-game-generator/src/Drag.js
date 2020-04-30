@@ -7,7 +7,8 @@ class Drag extends React.Component {
 
     startDrag(ev) {
         console.log("1" + ev.target.id);
-        ev.dataTransfer.setData("text", this.props.dataItem);
+        var stringify = JSON.stringify(this.props.dataItem);
+        ev.dataTransfer.setData("text", stringify);
       }
 
     render() {

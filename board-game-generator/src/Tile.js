@@ -8,22 +8,6 @@ import { ChromePicker } from 'react-color';
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from './Constants'
 
-function Tiles() {
-    const [{ isDragging }, drag] = useDrag({
-        item: { type: ItemTypes.TILE },
-        collect: monitor => ({
-        isDragging: !!monitor.isDragging(),
-        }),
-    })
-
-    return(
-        <div ref={drag}>
-            <Tile></Tile>
-        </div>
-    );
-}
-
-
 class Tile extends React.Component {
 
     constructor(props) {
@@ -34,15 +18,8 @@ class Tile extends React.Component {
             backText: this.props.backText,
             background: this.props.background};
         this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
-    }
-
-    Tile = () => {
-        const [{ isDragging }, drag] = useDrag({
-            item: { type: ItemTypes.TILE },
-            collect: monitor => ({
-            isDragging: !!monitor.isDragging(),
-            }),
-        })
+        this.handleColorChange = this.handleColorChange.bind(this);
+        this.handleColorChangeComplete = this.handleColorChangeComplete.bind(this);
     }
 
     edit = () => {
@@ -65,11 +42,13 @@ class Tile extends React.Component {
     }
 
     handleColorChange= (color, event)  => {
-        this.setState({ background: color.hex});
+        //this.setState({ background: color.hex});
+        this.props.onColorUpdate(color.hex);
     }
 
-    handleColorChangeComplete = (color) => {
-        this.setState({ background: color.hex});
+    handleColorChangeComplete = (event) => {
+        // this.setState({ background: color.hex});
+        this.props.onColorUpdate(event.hex);
     };
 
     saveColorChange = () => {
@@ -86,13 +65,14 @@ class Tile extends React.Component {
         }
     }
 
+
     renderTileNoButtons = () => {
         return(
             <div className="Tile">
-                <div className="TileFront TileFace" style={{backgroundColor: this.state.background}} >
+                <div className="TileFront TileFace" style={{backgroundColor: this.props.background}} >
                     <h1 className="label" onClick={this.onClick}>{this.props.frontText}</h1>
                 </div>
-                <div className="TileBack TileFace" style={{backgroundColor: this.state.background}} >
+                <div className="TileBack TileFace" style={{backgroundColor: this.props.background}} >
                     <h1 className="label" onClick={this.onClick}>{this.state.backText}</h1>
                 </div>
             </div>);
@@ -101,12 +81,12 @@ class Tile extends React.Component {
     renderTile = () => {
         return (
             <div className="Tile">
-                <div className="TileFront TileFace" style={{backgroundColor: this.state.background}} >
+                <div className="TileFront TileFace" style={{backgroundColor: this.props.background}} >
                     <h1 className="label" onClick={this.onClick}>{this.props.frontText}</h1>
                     <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
                     <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
                 </div>
-                <div className="TileBack TileFace" style={{backgroundColor: this.state.background}} >
+                <div className="TileBack TileFace" style={{backgroundColor: this.props.background}} >
                     <h1 className="label" onClick={this.onClick}>{this.state.backText}</h1>
                     <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
                 </div>
@@ -117,8 +97,8 @@ class Tile extends React.Component {
     renderEditText = (text, classes) => {
         return (
             <div className="Tile">
-                <div className={classes} style={{backgroundColor: this.state.background}}>
-                    <textarea maxLength="65" className="text-area" defaultValue={text} onChange={this.handleTextAreaChange} style={{backgroundColor: this.state.background}}></textarea>
+                <div className={classes} style={{backgroundColor: this.props.background}}>
+                    <textarea maxLength="65" className="text-area" defaultValue={text} onChange={this.handleTextAreaChange} style={{backgroundColor: this.props.background}}></textarea>
                     <button onClick={this.save} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
                 </div>
             </div>
@@ -128,11 +108,11 @@ class Tile extends React.Component {
     renderColorChange = () => {
         return (
             <div className="colorContainer">
-                <div className="Tile" style={{backgroundColor: this.state.background}}>
+                <div className="Tile" style={{backgroundColor: this.props.background}}>
                     <h1 className="label">{this.props.frontText}</h1>
                     <button onClick={this.saveColorChange} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
                 </div>
-                < ChromePicker color={this.state.background} onChange={this.handleColorChange} onChangeComplete={this.handleColorChangeComplete}/>
+                < ChromePicker color={this.props.background} onChange={this.handleColorChange} onChangeComplete={this.handleColorChangeComplete}/>
             </div>
         );
     }
