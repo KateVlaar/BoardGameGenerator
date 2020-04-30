@@ -19,7 +19,7 @@ class DropTarget extends React.Component {
         const droppedItem = ev.dataTransfer.getData("text");
         console.log("HERE: " + droppedItem);
         if (droppedItem) {
-            this.props.onItemDropped(droppedItem, this.state.targetClass);
+            this.props.onItemDropped(droppedItem, ev.pageX, ev.pageY);
         }
         // dropevent.target.appendChild(document.getElementById(data));
     }
