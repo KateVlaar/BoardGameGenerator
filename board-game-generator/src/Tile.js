@@ -5,8 +5,6 @@ import {faFillDrip} from '@fortawesome/free-solid-svg-icons';
 import {faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import { ChromePicker } from 'react-color';
-import { useDrag } from 'react-dnd'
-import { ItemTypes } from './Constants'
 
 class Tile extends React.Component {
 
@@ -136,18 +134,5 @@ class Tile extends React.Component {
         }
     }
 }
-// export default function Card({ isDragging, text }) {
-//     const [{ opacity }, dragRef] = useDrag({
-//       item: { type: "Tile", text },
-//       collect: monitor => ({
-//         opacity: monitor.isDragging() ? 0.5 : 1,
-//       }),
-//     })
-//     return (
-//       <div ref={dragRef} style={{ opacity }}>
-//         {text}
-//       </div>
-//     )
-//   }
-  
+
 export default Tile;

@@ -1,8 +1,6 @@
 import React from 'react';
 import Tile from './Tile.js';
 import Dropdown from './Dropdown.js';
-import DropTarget from './DropTarget.js';
-import Board from './Board';
 import Drag from './Drag';
 
 const advancements = [
