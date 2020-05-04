@@ -9,18 +9,15 @@ class DropTarget extends React.Component {
     dragOver(ev) {
         ev.preventDefault();
         ev.stopPropagation();
-        console.log(ev.target.className);
         this.setState({targetClass: ev.target.className});
     }
     
     drop(ev) {
         ev.preventDefault();
         const droppedItem = ev.dataTransfer.getData("text");
-        console.log("HERE: " + droppedItem);
         if (droppedItem) {
             this.props.onItemDropped(droppedItem, ev.pageX, ev.pageY);
         }
-        // dropevent.target.appendChild(document.getElementById(data));
     }
     
     render() {
