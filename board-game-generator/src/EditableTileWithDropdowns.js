@@ -80,7 +80,7 @@ class EditableTileWithDropdowns extends React.Component {
 					</div>
 					{/* <DefaultCard onDefaultCardSelect={this.newDefaultCardSelect} frontText={this.state.frontText} backText="Player must advance by three spaces" background="#b0e0e6" /> */}
 				<Drag dataItem={{frontText: this.state.frontText, background: this.state.background}}>
-					<Tile onDefaultCardSelect={this.newDefaultCardSelect} onColorUpdate={this.onColorUpdate} frontText={this.state.frontText} backText="Player must advance by three spaces" background={this.state.background} />
+					<Tile onDefaultCardSelect={this.newDefaultCardSelect} class="tile" onColorUpdate={this.onColorUpdate} frontText={this.state.frontText} backText="Player must advance by three spaces" background={this.state.background} />
 				</Drag>
 				{/* <DropTarget onItemDropped={this.onItemDropped}><Board className="board" draggable onDragOver={e => this.handleDragOver(e)}></Board></DropTarget> */}
 			</div>);

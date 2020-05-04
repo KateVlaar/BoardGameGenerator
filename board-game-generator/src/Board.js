@@ -227,7 +227,8 @@ class Board extends React.Component {
     }
 
     createBoard = (item, index) => {
-            return(<div key={index} style={{position: "absolute", left: item.x, top: item.y}} className={index}><Tile frontText={item.frontText} hideButtons={true} backText="Player must advance by three spaces" background={item.background}></Tile></div>);
+        console.log("index " + index);
+        return(<div key={index} style={{position: "absolute", left: item.x, top: item.y}} className={index}><Tile class={"tile"+index} frontText={item.frontText} hideButtons={true} backText="Player must advance by three spaces" background={item.background}></Tile></div>);
     }
 
     onItemDropped(droppedItem, x, y) {

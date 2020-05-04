@@ -36,7 +36,8 @@ class Tile extends React.Component {
     }
 
     onClick = () => {
-        document.querySelector('.Tile').classList.toggle('is-flipped');
+        console.log(this.props.class)
+        document.querySelector("." + this.props.class).classList.toggle('is-flipped');
     }
 
     handleColorChange= (color, event)  => {
@@ -55,7 +56,7 @@ class Tile extends React.Component {
     }
 
     handleTextAreaChange = (event) => {
-        if (document.querySelector('.Tile').classList.contains('is-flipped')) {
+        if (document.querySelector("." + this.props.class).classList.contains('is-flipped')) {
             this.setState({backText: event.target.value});
         } else {
             this.props.onDefaultCardSelect(event.target.value);
@@ -66,7 +67,7 @@ class Tile extends React.Component {
 
     renderTileNoButtons = () => {
         return(
-            <div className="Tile">
+            <div className={this.props.class + " Tile"}>
                 <div className="TileFront TileFace" style={{backgroundColor: this.props.background}} >
                     <h1 className="label" onClick={this.onClick}>{this.props.frontText}</h1>
                 </div>
@@ -78,7 +79,7 @@ class Tile extends React.Component {
 
     renderTile = () => {
         return (
-            <div className="Tile">
+            <div className={this.props.class + " Tile"}>
                 <div className="TileFront TileFace" style={{backgroundColor: this.props.background}} >
                     <h1 className="label" onClick={this.onClick}>{this.props.frontText}</h1>
                     <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
@@ -94,7 +95,7 @@ class Tile extends React.Component {
 
     renderEditText = (text, classes) => {
         return (
-            <div className="Tile">
+            <div className={this.props.class + " Tile"}>
                 <div className={classes} style={{backgroundColor: this.props.background}}>
                     <textarea maxLength="65" className="text-area" defaultValue={text} onChange={this.handleTextAreaChange} style={{backgroundColor: this.props.background}}></textarea>
                     <button onClick={this.save} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
@@ -106,7 +107,7 @@ class Tile extends React.Component {
     renderColorChange = () => {
         return (
             <div className="colorContainer">
-                <div className="Tile" style={{backgroundColor: this.props.background}}>
+                <div className={this.props.class + " Tile"} style={{backgroundColor: this.props.background}}>
                     <h1 className="label">{this.props.frontText}</h1>
                     <button onClick={this.saveColorChange} className="tile-button"><FontAwesomeIcon icon={faCheckCircle} size="2x" /></button>
                 </div>
@@ -118,7 +119,7 @@ class Tile extends React.Component {
     render() {
         if (!(this.props.hideButtons)) {
             if (this.state.editingText) {
-                if (document.querySelector('.Tile').classList.contains('is-flipped')) {
+                if (document.querySelector("." + this.props.class).classList.contains('is-flipped')) {
                     return this.renderEditText(this.state.backText, "TileFace TileBack");
                 } else {
                     return this.renderEditText(this.props.frontText, "TileFace TileFront");
