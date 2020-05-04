@@ -57,9 +57,10 @@ class Tile extends React.Component {
     handleTextAreaChange = (event) => {
         if (document.querySelector("." + this.props.class).classList.contains('is-flipped')) {
             // this.setState({backText: event.target.value});
-            this.props.onBackTextUpdate(event.target.value);
+            this.props.onDefaultCardSelect(this.props.frontText, event.target.value);
         } else {
-            this.props.onDefaultCardSelect(event.target.value);
+            console.log("handletextareachange");
+            this.props.onDefaultCardSelect(event.target.value, this.props.backText);
             //this.setState({frontText: event.target.value});
         }
     }

@@ -14,7 +14,7 @@ class Board extends React.Component {
             arr: [
                 {
                     index: 0,
-                    frontText: "help",
+                    frontText: "",
                     backText: "",
                     background: "#E6E6E6",
                     x: xStart,
