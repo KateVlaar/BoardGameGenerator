@@ -10,14 +10,6 @@ class Dropdown extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount() {
-		window.addEventListener("click", this.props.onClick);
-    }
-    
-	componentWillUnmount() {
-		window.removeEventListener("click", this.props.onClick);
-	}
-
     openDropdown = () => {
         document.querySelector('.' + this.props.dropdownClass).classList.toggle("show");
     }

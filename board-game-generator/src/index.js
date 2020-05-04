@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import EditableTileWithDropdowns from './EditableTileWithDropdowns';
 import Board from './Board';
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
+// KNOWN BUGS:
+// 1. Dragging on instruction face mirrors tile
+// 2. Board is not dynamically resizeable
+// 3. Tile positions are not programatically determined
+// MISSING FEATURES:
+// 1. Click to dismiss dropdown
+// 2. Refresh saves state
 
 ReactDOM.render(
   <React.StrictMode>

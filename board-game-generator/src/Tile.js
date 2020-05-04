@@ -20,48 +20,38 @@ class Tile extends React.Component {
     }
 
     edit = () => {
-        console.log('Editing Comment');
         this.setState({editingText: true});
     }
 
     colorChange = () => {
         this.setState({ changingColor: true });
-        console.log(this.state.changingColor);
     }
 
     save = () => {
-        console.log('Saving Comment');
         this.setState({editingText: false});
     }
 
     onClick = () => {
-        console.log(this.props.class)
         document.querySelector("." + this.props.class).classList.toggle('is-flipped');
     }
 
     handleColorChange= (color, event)  => {
-        //this.setState({ background: color.hex});
         this.props.onColorUpdate(color.hex);
     }
 
     handleColorChangeComplete = (event) => {
-        // this.setState({ background: color.hex});
         this.props.onColorUpdate(event.hex);
     };
 
     saveColorChange = () => {
         this.setState({ changingColor: false});
-        console.log("updating background")
     }
 
     handleTextAreaChange = (event) => {
         if (document.querySelector("." + this.props.class).classList.contains('is-flipped')) {
-            // this.setState({backText: event.target.value});
             this.props.onDefaultCardSelect(this.props.frontText, event.target.value);
         } else {
-            console.log("handletextareachange");
             this.props.onDefaultCardSelect(event.target.value, this.props.backText);
-            //this.setState({frontText: event.target.value});
         }
     }
 

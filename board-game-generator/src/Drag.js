@@ -1,9 +1,6 @@
 import React from 'react';
 
 class Drag extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     startDrag(ev) {
         var stringify = JSON.stringify(this.props.dataItem);

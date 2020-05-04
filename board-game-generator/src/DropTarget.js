@@ -1,15 +1,10 @@
 import React from 'react';
 
 class DropTarget extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {targetClass: ""};
-    }
 
     dragOver(ev) {
         ev.preventDefault();
         ev.stopPropagation();
-        this.setState({targetClass: ev.target.className});
     }
     
     drop(ev) {

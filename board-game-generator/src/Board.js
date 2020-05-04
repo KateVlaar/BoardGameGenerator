@@ -1,17 +1,16 @@
 import React from 'react';
-import './Board.css';
 import Tile from './Tile.js';
 import DropTarget from './DropTarget'
 
 const BOARD_WIDTH = 6;
-const BOARD_SIZE = 23;
-const xStart = (window.innerWidth - ((250*BOARD_WIDTH) + (5*(BOARD_WIDTH-1)))) / 2
+const TILE_WIDTH = 255;
+const xStart = (window.innerWidth - (((TILE_WIDTH-5)*BOARD_WIDTH) + (5*(BOARD_WIDTH-1)))) / 2;
 
 class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            arr: [
+            boardTiles: [
                 {
                     index: 0,
                     frontText: "",
@@ -25,7 +24,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255,
+                    x: xStart + TILE_WIDTH,
                     y: 500
                 },
                 {
@@ -33,7 +32,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*2,
+                    x: xStart + TILE_WIDTH*2,
                     y: 500
                 },
                 {
@@ -41,7 +40,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*3,
+                    x: xStart + TILE_WIDTH*3,
                     y: 500
                 },
                 {
@@ -49,7 +48,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*4,
+                    x: xStart + TILE_WIDTH*4,
                     y: 500
                 },
                 {
@@ -57,7 +56,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*5,
+                    x: xStart + TILE_WIDTH*5,
                     y: 500
                 },
                 {
@@ -65,7 +64,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*5,
+                    x: xStart + TILE_WIDTH*5,
                     y: 755
                 },
                 {
@@ -73,7 +72,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*5,
+                    x: xStart + TILE_WIDTH*5,
                     y: 1010
                 },
                 {
@@ -81,7 +80,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*4,
+                    x: xStart + TILE_WIDTH*4,
                     y: 1010
                 },
                 {
@@ -89,7 +88,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*3,
+                    x: xStart + TILE_WIDTH*3,
                     y: 1010
                 },
                 {
@@ -97,7 +96,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*2,
+                    x: xStart + TILE_WIDTH*2,
                     y: 1010
                 },
                 {
@@ -105,7 +104,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*1,
+                    x: xStart + TILE_WIDTH,
                     y: 1010
                 },
                 {
@@ -137,7 +136,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255,
+                    x: xStart + TILE_WIDTH,
                     y: 1520
                 },
                 {
@@ -145,7 +144,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*2,
+                    x: xStart + TILE_WIDTH*2,
                     y: 1520
                 },
                 {
@@ -153,7 +152,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*3,
+                    x: xStart + TILE_WIDTH*3,
                     y: 1520
                 },
                 {
@@ -161,7 +160,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*4,
+                    x: xStart + TILE_WIDTH*4,
                     y: 1520
                 },
                 {
@@ -169,7 +168,7 @@ class Board extends React.Component {
                     frontText: "",
                     backText: "",
                     background: "#E6E6E6",
-                    x: xStart + 255*5,
+                    x: xStart + TILE_WIDTH*5,
                     y: 1520
                 }
             ]
@@ -178,9 +177,9 @@ class Board extends React.Component {
     }
 
     getTileIndexFromPosition(x, y) {
-        for (let i = 0; i < this.state.arr.length; i++) {
-            let item = this.state.arr[i];
-            if ((x >= item.x && x <= item.x + 250) && (y >= item.y && y <= item.y + 250)) {
+        for (let i = 0; i < this.state.boardTiles.length; i++) {
+            let item = this.state.boardTiles[i];
+            if ((x >= item.x && x <= item.x + TILE_WIDTH) && (y >= item.y && y <= item.y + TILE_WIDTH)) {
                 return i;
             }
         }
@@ -191,21 +190,19 @@ class Board extends React.Component {
     }
 
     onItemDropped(droppedItem, x, y) {
-        var a = this.state.arr;
+        var boardItems = this.state.boardTiles;
         var index = this.getTileIndexFromPosition(x, y);
-        console.log(index);
-        var obj = JSON.parse(droppedItem);
-        a[index].frontText = obj.frontText;
-        a[index].backText = obj.backText;
-        a[index].background = obj.background;
-        this.setState({arr: a});
+        var droppedItemData = JSON.parse(droppedItem);
+        boardItems[index].frontText = droppedItemData.frontText;
+        boardItems[index].backText = droppedItemData.backText;
+        boardItems[index].background = droppedItemData.background;
+        this.setState({boardTiles: boardItems});
     }
 
     render() {
         return (
             <DropTarget className="board" onItemDropped={this.onItemDropped} style={{textAlign: "center"}}>
-                {console.log(this.state.arr[1])}
-                {this.state.arr.map(this.createBoard)}
+                {this.state.boardTiles.map(this.createBoard)}
             </DropTarget>);
     }
 }

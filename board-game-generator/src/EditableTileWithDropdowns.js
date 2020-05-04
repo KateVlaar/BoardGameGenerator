@@ -66,18 +66,8 @@ class EditableTileWithDropdowns extends React.Component {
     }
 
     newDefaultCardSelect = (frontText, backText) => {
-        console.log("New default card select " + frontText + " " + backText)
 		this.setState({frontText: frontText});
 		this.setState({backText: backText});
-	}
-
-	onBackTextUpdate = (backText) => {
-		console.log("New default card select")
-		this.setState({backText: backText})
-	}
-	
-	onItemDropped(droppedItem) {
-        console.log("We been dropped " + droppedItem );
 	}
 	
 	onColorUpdate = (color) => {
@@ -87,10 +77,10 @@ class EditableTileWithDropdowns extends React.Component {
     render () {
         return (<div onClick={this.closeDropdownOnTouchOutside} style={{textAlign: "center"}}>
 					<div className="dropdown-headers" >
-						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect} onBackTextUpdate={this.backTextUpdate}  items={advancements} header="Advancement"  dropdownClass="dropdown-content-1" />
-						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect} onBackTextUpdate={this.backTextUpdate}  items={drawBacks} header="Draw Backs" dropdownClass="dropdown-content-2"/>
-						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect} onBackTextUpdate={this.backTextUpdate}  items={punishments} header="Punishments" dropdownClass="dropdown-content-3"/>
-						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect} onBackTextUpdate={this.backTextUpdate}  items={games} header="Games" dropdownClass="dropdown-content-4"/>
+						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect} items={advancements} header="Advancement"  dropdownClass="dropdown-content-1" />
+						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect} items={drawBacks} header="Draw Backs" dropdownClass="dropdown-content-2"/>
+						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect} items={punishments} header="Punishments" dropdownClass="dropdown-content-3"/>
+						<Dropdown onDefaultCardSelect={this.newDefaultCardSelect} items={games} header="Games" dropdownClass="dropdown-content-4"/>
 					</div>
 				<Drag dataItem={{frontText: this.state.frontText, backText: this.state.backText, background: this.state.background}}>
 					<Tile onDefaultCardSelect={this.newDefaultCardSelect} class="tile" onColorUpdate={this.onColorUpdate} frontText={this.state.frontText} backText={this.state.backText} background={this.state.background} />
