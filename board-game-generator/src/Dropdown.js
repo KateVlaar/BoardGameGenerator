@@ -7,9 +7,6 @@ import {faSortDown} from '@fortawesome/free-solid-svg-icons';
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedItem: "hello"
-        }
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -25,8 +22,8 @@ class Dropdown extends React.Component {
         document.querySelector('.' + this.props.dropdownClass).classList.toggle("show");
     }
 
-    handleChange = (event) => {
-        this.props.onDefaultCardSelect(event);
+    handleChange = (frontText, backText) => {
+        this.props.onDefaultCardSelect(frontText, backText);
     }
 
     render() {
@@ -36,7 +33,7 @@ class Dropdown extends React.Component {
                 <div className={this.props.dropdownClass + " dropdown-content"}>
                     {this.props.items.map((item, index) => {
                         return (<div key={index}>
-                                    <button onClick={() => this.handleChange(item.frontText)} >{item.frontText}</button>
+                                    <button onClick={() => this.handleChange(item.frontText, item.backText)} >{item.frontText}</button>
                                 </div>);
                     })}
                 </div>

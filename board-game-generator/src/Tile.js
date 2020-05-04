@@ -13,7 +13,6 @@ class Tile extends React.Component {
         this.state = {
             editingText: false,
             changingColor: false,
-            backText: this.props.backText,
             background: this.props.background};
         this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
         this.handleColorChange = this.handleColorChange.bind(this);
@@ -57,7 +56,8 @@ class Tile extends React.Component {
 
     handleTextAreaChange = (event) => {
         if (document.querySelector("." + this.props.class).classList.contains('is-flipped')) {
-            this.setState({backText: event.target.value});
+            // this.setState({backText: event.target.value});
+            this.props.onBackTextUpdate(event.target.value);
         } else {
             this.props.onDefaultCardSelect(event.target.value);
             //this.setState({frontText: event.target.value});
@@ -72,7 +72,7 @@ class Tile extends React.Component {
                     <h1 className="label" onClick={this.onClick}>{this.props.frontText}</h1>
                 </div>
                 <div className="TileBack TileFace" style={{backgroundColor: this.props.background}} >
-                    <h1 className="label" onClick={this.onClick}>{this.state.backText}</h1>
+                    <h1 className="label" onClick={this.onClick}>{this.props.backText}</h1>
                 </div>
             </div>);
     }
@@ -86,7 +86,7 @@ class Tile extends React.Component {
                     <button onClick={this.colorChange} className="tile-button"><FontAwesomeIcon icon={faFillDrip} size="2x" /></button>
                 </div>
                 <div className="TileBack TileFace" style={{backgroundColor: this.props.background}} >
-                    <h1 className="label" onClick={this.onClick}>{this.state.backText}</h1>
+                    <h1 className="label" onClick={this.onClick}>{this.props.backText}</h1>
                     <button onClick={this.edit} className="tile-button"><FontAwesomeIcon icon={faPencilAlt} size="2x" /></button>
                 </div>
             </div>
@@ -120,7 +120,7 @@ class Tile extends React.Component {
         if (!(this.props.hideButtons)) {
             if (this.state.editingText) {
                 if (document.querySelector("." + this.props.class).classList.contains('is-flipped')) {
-                    return this.renderEditText(this.state.backText, "TileFace TileBack");
+                    return this.renderEditText(this.props.backText, "TileFace TileBack");
                 } else {
                     return this.renderEditText(this.props.frontText, "TileFace TileFront");
                 }

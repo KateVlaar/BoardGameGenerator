@@ -175,46 +175,6 @@ class Board extends React.Component {
             ]
         };
         this.onItemDropped = this.onItemDropped.bind(this);
-        //this.setTileCoordinates();
-    }
-
-    setTileCoordinates() {
-        var xStart = (window.innerWidth - ((250*BOARD_WIDTH) + (5*(BOARD_WIDTH-1)))) / 2;
-        console.log(xStart);
-        var y = 500;
-        var x = xStart;
-        for (let i = 1; i <= this.state.arr.length; i++) {
-            var item = this.state.arr[i-1];
-            console.log(i);
-            // if (((i-1) % BOARD_WIDTH) === 0 && i !== 1) {
-            //     console.log("1 " + i);
-            //     x = xStart;
-            //     y += 255;
-            // }
-            if (i % BOARD_WIDTH != 0) {
-                item.x = x;
-                item.y = y;
-                x += 255;
-            }
-            if (i === 7 || i === 21) {
-                item.x = x - 255;
-                x = xStart;
-                y += 255;
-                item.y = y;
-                y += 255;
-            }
-
-            if (i === 14 || i == 28) {
-                item.x = xStart;
-                y += 255;
-                item.y = y;
-            }
-            // if (i % BOARD_WIDTH === 0) {
-            //     console.log("2 " + i);
-            //     x = xStart;
-            //     y += 255;
-            // }
-        }
     }
 
     getTileIndexFromPosition(x, y) {
@@ -227,8 +187,7 @@ class Board extends React.Component {
     }
 
     createBoard = (item, index) => {
-        console.log("index " + index);
-        return(<div key={index} style={{position: "absolute", left: item.x, top: item.y}} className={index}><Tile class={"tile"+index} frontText={item.frontText} hideButtons={true} backText="Player must advance by three spaces" background={item.background}></Tile></div>);
+        return(<div key={index} style={{position: "absolute", left: item.x, top: item.y}} className={index}><Tile class={"tile"+index} frontText={item.frontText} backText={item.backText} hideButtons={true} background={item.background}></Tile></div>);
     }
 
     onItemDropped(droppedItem, x, y) {
@@ -237,13 +196,13 @@ class Board extends React.Component {
         console.log(index);
         var obj = JSON.parse(droppedItem);
         a[index].frontText = obj.frontText;
+        a[index].backText = obj.backText;
         a[index].background = obj.background;
         this.setState({arr: a});
     }
 
     render() {
         return (
-            // <DropTarget onItemDropped={this.onItemDropped}><Board className="board" draggable onDragOver={e => this.handleDragOver(e)}></Board></DropTarget>
             <DropTarget className="board" onItemDropped={this.onItemDropped} style={{textAlign: "center"}}>
                 {console.log(this.state.arr[1])}
                 {this.state.arr.map(this.createBoard)}
